@@ -1,0 +1,91 @@
+<link href="main.css" rel="stylesheet">
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<div style="overflow: hidden">
+    <div class="slide-container">
+        <div class="slide-box">
+            <img src="car1.png" draggable="false">
+        </div>
+        <div class="slide-box">
+            <img src="car2.png" draggable="false">
+        </div>
+        <div class="slide-box">
+            <img src="car3.png" draggable="false">
+        </div>
+    </div>
+</div>
+
+<button class = 'slide-1'>1</button>
+<button class = 'slide-2'>2</button>
+<button class = 'slide-3'>3</button>
+<button class = 'next'>다음</button>
+<button class = 'previous'>이전</button>
+
+
+<script>
+    
+    var picture =1;
+    
+    document.querySelector('.slide-1').addEventListener('click', function(){
+        document.querySelector('.slide-container').style.transform = " translateX(0vw)";
+        picture = 1;
+    })
+    document.querySelector('.slide-2').addEventListener('click', function(){
+        document.querySelector('.slide-container').style.transform = " translateX(-100vw)";
+        picture = 2;
+    })
+    document.querySelector('.slide-3').addEventListener('click', function(){
+        document.querySelector('.slide-container').style.transform = " translateX(-200vw)";
+        picture = 3;
+    })
+
+
+    document.querySelector('.next').addEventListener('click',function(){
+        document.querySelector('.slide-container').style.transform = 'translateX(-'+picture+'00vw)';
+        picture +=1
+    })
+
+    document.querySelector('.previous').addEventListener('click',function(){
+        picture -=1
+        document.querySelector('.slide-container').style.transform = 'translateX(-'+picture+'00vw)';
+        
+    })
+
+    var startPoint = 0;
+    var push = false;
+
+    // 마우스포인트 시작점
+    $('.slide-box').eq(0).on('mousedown',function(e){
+        startPoint = e.clientX;
+        push = true;
+    });
+    // 마우스포인트 끝난 시점
+    $('.slide-box').eq(0).on('mousemove',function(e){
+        if(push == true){
+            movePoint = e.clientX - startPoint;
+            $('.slide-container').css('transform',
+            `translateX(${movePoint}px)`)
+        }
+    // 마우스버튼 클릭 해제
+    $('.slide-box').eq(0).on('mouseup',function(e){
+        push = false;
+        if(movePoint < -300){ 
+                $('.slide-container')
+                .css('transition','all 0.5s')
+                .css('transform',
+                'translateX(-100vw');
+            }else{
+                $('.slide-container').css('transform',
+                'translateX(0vw');
+            }
+        setTimeout(() =>{
+            $('.slide-container').css('transition','none')
+        },500)
+        
+        })
+    });
+
+
+</script>

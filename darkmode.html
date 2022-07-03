@@ -1,0 +1,42 @@
+
+<link rel="stylesheet" href="main.css">
+
+<nav class = 'navbar navbar-light bg-light'>
+    <div class = 'container-fluid'>
+        <span class = 'navbar-brand'>JSShop</span>
+        <span class="badge-bg-dark">Dark 🔄</span>
+        <button class ='navbar-toggler' type="button">
+            <span class="navbar-toggler-icon">버튼</span>
+        </button>
+    </div>
+
+</nav>
+
+<script>
+
+    var count = 0;
+
+    document.querySelector('.navbar-toggler').addEventListener('click',function(){
+        count++;
+        if( count % 2 ==0){
+            document.querySelector('.badge-bg-dark').innerHTML = "Light";
+        } else{
+            document.querySelector('.badge-bg-dark').innerHTML = "Dark";
+        }
+    })
+
+</script>
+
+
+<script>
+
+
+var  이름 ='kim'
+//  재선언 재할당 다 가능 범위는 function 안에
+
+let 이름1 = 'Jeong' 
+//  let 재선언 불가능  범위 {}
+
+const 이름2 = 'Seong'
+//  const 재선언 재할당 불가능 범위 {}
+</script>

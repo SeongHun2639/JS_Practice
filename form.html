@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+
+
+</head>
+<body>
+    
+    <div class="black-bg">
+        <div class="white-bg">
+          <h4>로그인하세요</h4>
+          <form action="success.html">
+            <div class="my-3">
+              <input type="text" class="form-control" id="email">
+             </div>
+             <div class="my-3">
+               <input type="password" class="form-control" id="secret">
+             </div>
+             <button type="submit" class="btn-btn-primary" id="send">전송</button>
+          </form> 
+          <button class="btn-btn-danger" id="close">닫기</button>
+        </div>
+      </div> 
+      
+      <script>
+
+        document.querySelector('.black-bg').addEventListener('click',function(e){
+          
+          if(e.target == document.querySelector('.black-bg')){
+            document.querySelector('.black-bg').classList.remove('show-modal');
+          }
+
+          
+        })
+
+          document.getElementById('send').addEventListener('click',function(e){
+              if(document.getElementById('email').value ==''){
+                alert('아이디 입력');
+                e.preventDefault();
+              }
+
+              if(/\S+@\S+\.\S+/.test(document.getElementById('email').value)==false){
+                  alert('이메일형식으로 쓰삼');
+                  e.preventDefault();
+              }
+          })
+
+          document.getElementById('send').addEventListener('click',function(e){
+              if(document.getElementById('secret').value ==''){
+                  alert('비밀번호 입력');
+                  e.preventDefault(e);
+              }
+              if(document.getElementById('secret').value.length<5){
+                  alert('비밀번호 6자리이상 쓰세요');
+                  e.preventDefault(e);
+              }
+              if(/A-Z/.test(document.getElementById('secret').value)==false){
+                alert("비번 대문자 추가하샘");
+                e.preventDefault(e);
+              }
+            })
+
+       
+
+
+      </script>
+    
+
+    <div class="main-bg">
+        <h4>Shirts on Sale</h4>
+        <button class ='modal'>로그인</button>
+    </div>
+
+    <script>
+
+
+        document.querySelector('.modal').addEventListener('click',function(){
+            document.querySelector('.black-bg').classList.add('show-modal');
+        })
+        document.querySelector(".btn-btn-danger").addEventListener('click',function(){
+            document.querySelector('.black-bg').classList.remove('show-modal')
+        })
+    </script>
+
+
+
+
+</body>
+
+</html>  
